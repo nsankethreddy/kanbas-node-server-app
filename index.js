@@ -1,6 +1,7 @@
 import express from 'express';
 import Lab5 from "./Lab5/index.js";
 // import Hello from "./hello.js"
+import Hello from "./Kanbas/Hello/index.js"
 import cors from "cors";
 import UserRoutes from "./Kanbas/Users/routes.js";
 import session from "express-session";
@@ -34,7 +35,7 @@ app.use(express.json());
 
 UserRoutes(app);
 CourseRoutes(app);
-// Hello(app)
+Hello(app)
 Lab5(app);
 ModuleRoutes(app);
 AssignmentRoutes(app);
