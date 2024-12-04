@@ -1,4 +1,4 @@
-export default function Hello(app) {
+export default function hello(app) {
   app.get('/hello', (req, res) => {
     res.send('Life is good!')
   })
