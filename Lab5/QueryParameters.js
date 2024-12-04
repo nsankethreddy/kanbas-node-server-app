@@ -1,5 +1,5 @@
 export default function QueryParameters(app) {
-    app.get("/lab5/calculator", (req, res) => {
+    app.get("/Lab5/calculator", (req, res) => {
       const { a, b, operation } = req.query;
       let result = 0;
       switch (operation) {
@@ -15,12 +15,11 @@ export default function QueryParameters(app) {
         case "divide":
           result = parseInt(a) / parseInt(b);
           break;
-         
+
         default:
           result = "Invalid operation";
       }
       res.send(result.toString());
     });
   }
-  
-  
+
