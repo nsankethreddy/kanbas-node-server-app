@@ -1,6 +1,6 @@
 import express from 'express';
 import Lab5 from "./Lab5/index.js";
-import Hello from "./hello.js"
+// import Hello from "./hello.js"
 import cors from "cors";
 import UserRoutes from "./Kanbas/Users/routes.js";
 import session from "express-session";
@@ -15,7 +15,7 @@ const app = express()
 app.use(cors({
     credentials: true,
     origin: "http://localhost:3000",
-})); // "https://assignment5--chimerical-cupcake-1f6716.netlify.app" ||
+}));
 const sessionOptions = {
     secret: process.env.SESSION_SECRET || "kanbas",
     resave: false,
@@ -34,7 +34,7 @@ app.use(express.json());
 
 UserRoutes(app);
 CourseRoutes(app);
-Hello(app)
+// Hello(app)
 Lab5(app);
 ModuleRoutes(app);
 AssignmentRoutes(app);
