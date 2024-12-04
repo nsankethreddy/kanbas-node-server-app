@@ -4,29 +4,30 @@ const assignment = {
     due: "2021-10-10", completed: false, score: 0,
   };
   export default function WorkingWithObjects(app) {
-    app.get("/Lab5/assignment", (req, res) => {
+    app.get("/lab5/assignment", (req, res) => {
       res.json(assignment);
     });
-    app.get("/Lab5/assignment/title", (req, res) => {
+    app.get("/lab5/assignment/title", (req, res) => {
         res.json(assignment.title);
       });
-      app.get("/Lab5/assignment/title/:newTitle", (req, res) => {
+      app.get("/lab5/assignment/title/:newTitle", (req, res) => {
         const { newTitle } = req.params;
         assignment.title = newTitle;
         res.json(assignment);
       });
-      app.get("/Lab5/assignment/score/:newScore", (req, res) => {
+      app.get("/lab5/assignment/score/:newScore", (req, res) => {
         const { newScore } = req.params;
         assignment.score = newScore;
         res.json(assignment);
       });
-
-      app.get("/Lab5/assignment/completed/:newCompleted", (req, res) => {
+      
+      app.get("/lab5/assignment/completed/:newCompleted", (req, res) => {
         const { newCompleted } = req.params;
         assignment.completed = newCompleted === "true";  // Ensure it's a boolean
         res.json(assignment);
       });
-
-
+      
+     
   };
-
+  
+ 
