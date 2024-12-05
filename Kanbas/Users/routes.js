@@ -133,7 +133,7 @@ const Signin = async (req, res) => {
   };
 
 
-  const profile = (req, res) => {
+  const Profile = (req, res) => {
     const currentUser = req.session["currentUser"];
     if (!currentUser) {
       res.sendStatus(401);
@@ -195,7 +195,7 @@ app.get("/api/users/:userId/enrolled-courses", getEnrolledCourses);
   app.post("/api/users/Signup", Signup);
   app.post("/api/users/Signin", Signin);
   app.post("/api/users/signout", signout);
-  app.post("/api/users/Profile", profile);
+  app.post("/api/users/Profile", Profile);
   app.post("/api/users", createUser);
   app.get("/api/users", findAllUsers);
   app.get("/api/users/:userId", findUserById);
