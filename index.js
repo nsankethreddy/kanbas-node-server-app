@@ -10,7 +10,7 @@ import AssignmentRoutes from "./Kanbas/Assignments/routes.js"
 import EnrollmentRoutes from './Kanbas/Enrollments/routes.js';
 import mongoose from "mongoose";
 
-const REMOTE_SERVER = process.env.REMOTE_SERVER;
+const NETLIFY_URL = process.env.NETLIFY_URL;
 
 import "dotenv/config";
 const CONNECTION_STRING = process.env.MONGO_CONNECTION_STRING || "mongodb://127.0.0.1:27017/kanbas"
@@ -20,7 +20,7 @@ const app = express()
 app.use(cors({
   credentials: true,
   origin: [
-    REMOTE_SERVER || "http://localhost:3000" || true,
+    NETLIFY_URL || "http://localhost:3000" || true,
     true,
   ],
 }));
