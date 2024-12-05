@@ -17,7 +17,7 @@ mongoose.connect(CONNECTION_STRING);
 const app = express()
 app.use(cors({
   credentials: true,
-  origin: "https://a5--coruscating-bavarois-5b3310.netlify.app/" || "http://localhost:3000",
+  origin: "https://a6--coruscating-bavarois-5b3310.netlify.app/" || "http://localhost:3000",
 }));
 
 const sessionOptions = {
