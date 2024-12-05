@@ -17,15 +17,23 @@ mongoose.connect(CONNECTION_STRING);
 
 const app = express()
 
+
+const allowedOrigins = [
+  process.env.NETLIFY_URL, // Frontend deployed URL
+  "http://localhost:3000", // Local development URL
+];
+
 app.use(cors({
   credentials: true,
-  origin: [
-    NETLIFY_URL || "http://localhost:3000",
-  ],
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
 }));
-
-// app.use(cors());
-
+app.options("*", cors());
 
 const sessionOptions = {
   secret: process.env.SESSION_SECRET || "kanbas",
