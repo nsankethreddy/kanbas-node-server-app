@@ -18,7 +18,8 @@ const app = express()
 app.use(cors({
   credentials: true,
   origin: [
-    "https://a6--coruscating-bavarois-5b3310.netlify.app" || "http://localhost:3000",
+    "https://a6--coruscating-bavarois-5b3310.netlify.app" || "http://localhost:3000" || true,
+    true,
   ],
 }));
 
