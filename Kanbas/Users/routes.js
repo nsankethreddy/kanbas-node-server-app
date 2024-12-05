@@ -108,7 +108,7 @@ app.get("/api/users/:uid/courses", findCoursesForUser);
 
 
 
-  const signup = async (req, res) => {
+  const Signup = async (req, res) => {
     const user = await dao.findUserByUsername(req.body.username);
     if (user) {
       res.status(400).json({ message: "Username already taken" });
@@ -120,7 +120,7 @@ app.get("/api/users/:uid/courses", findCoursesForUser);
   };
 
 
-const signin = async (req, res) => {
+const Signin = async (req, res) => {
     const { username, password } = req.body;
     const currentUser = await dao.findUserByCredentials(username, password);
     if (currentUser) {
@@ -192,8 +192,8 @@ app.get("/api/users/:userId/enrolled-courses", getEnrolledCourses);
     res.json(user);
   };
 
-  app.post("/api/users/signup", signup);
-  app.post("/api/users/Signin", signin);
+  app.post("/api/users/Signup", Signup);
+  app.post("/api/users/Signin", Signin);
   app.post("/api/users/signout", signout);
   app.post("/api/users/profile", profile);
   app.post("/api/users", createUser);
