@@ -1,6 +1,6 @@
 import express from 'express';
 import Lab5 from "./Lab5/index.js";
-// import Hello from "./hello.js"
+import Hello from "./Hello.js"
 import cors from "cors";
 import UserRoutes from "./Kanbas/Users/routes.js";
 import session from "express-session";
@@ -17,7 +17,10 @@ mongoose.connect(CONNECTION_STRING);
 const app = express()
 app.use(cors({
   credentials: true,
-  origin: "https://a6--coruscating-bavarois-5b3310.netlify.app/" || "http://localhost:3000",
+  origin: [
+    "https://a6--coruscating-bavarois-5b3310.netlify.app",
+    "http://localhost:3000",
+  ],
 }));
 
 const sessionOptions = {
@@ -38,7 +41,7 @@ app.use(express.json());
 
 UserRoutes(app);
 CourseRoutes(app);
-// Hello(app)
+Hello(app)
 Lab5(app);
 ModuleRoutes(app);
 AssignmentRoutes(app);
