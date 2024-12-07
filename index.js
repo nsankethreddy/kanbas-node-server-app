@@ -19,7 +19,7 @@ const app = express()
 
 
 const corsOptions = {
-  origin: 'https://a6--coruscating-bavarois-5b3310.netlify.app',
+  origin: NETLIFY_URL || "http://localhost:3000",
   credentials: true,
 };
 
