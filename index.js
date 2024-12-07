@@ -25,7 +25,6 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-// Other middleware and routes
 app.use(express.json());
 UserRoutes(app);
 
@@ -57,4 +56,3 @@ Lab5(app);
 ModuleRoutes(app);
 AssignmentRoutes(app);
 EnrollmentRoutes(app);
-app.listen(process.env.PORT || 4000)
