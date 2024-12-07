@@ -182,7 +182,7 @@ app.get("/api/users/:userId/enrolled-courses", getEnrolledCourses);
 
 
 
-  const signout = (req, res) => {
+  const Signout = (req, res) => {
     req.session.destroy();
     res.sendStatus(200);
   };
@@ -194,8 +194,8 @@ app.get("/api/users/:userId/enrolled-courses", getEnrolledCourses);
 
   app.post("/api/users/Signup", Signup);
   app.post("/api/users/Signin", Signin);
-  app.post("/api/users/signout", signout);
-  app.get("/api/users/Profile", Profile);
+  app.post("/api/users/Signout", Signout);
+  app.post("/api/users/Profile", Profile);
   app.post("/api/users", createUser);
   app.get("/api/users", findAllUsers);
   app.get("/api/users/:userId", findUserById);
