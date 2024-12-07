@@ -18,22 +18,21 @@ mongoose.connect(CONNECTION_STRING);
 const app = express()
 
 
-const allowedOrigins = [
-  process.env.NETLIFY_URL, // Frontend deployed URL
-  "http://localhost:3000", // Local development URL
-];
-
-app.use(cors({
+const corsOptions = {
+  origin: 'https://a6--coruscating-bavarois-5b3310.netlify.app',
   credentials: true,
-  origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-}));
-app.options("*", cors());
+};
+
+app.use(cors(corsOptions));
+
+// Other middleware and routes
+app.use(express.json());
+UserRoutes(app);
+
+const PORT = process.env.PORT || 4000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
 
 const sessionOptions = {
   secret: process.env.SESSION_SECRET || "kanbas",
