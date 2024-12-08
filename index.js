@@ -4,35 +4,20 @@ import Hello from "./Hello.js"
 import cors from "cors";
 import UserRoutes from "./Kanbas/Users/routes.js";
 import session from "express-session";
-import CourseRoutes from "./Kanbas/Courses/routes.js";
-import ModuleRoutes from "./Kanbas/Modules/routes.js"
-import AssignmentRoutes from "./Kanbas/Assignments/routes.js"
+import CourseRoutes from './Kanbas/Courses/routes.js';
+import "dotenv/config";
+import ModuleRoutes from './Kanbas/Modules/routes.js';
+import AssignmentRoutes from './Kanbas/Assignments/routes.js';
 import EnrollmentRoutes from './Kanbas/Enrollments/routes.js';
 import mongoose from "mongoose";
-const NETLIFY_URL = process.env.NETLIFY_URL;
 
-import "dotenv/config";
-const CONNECTION_STRING = process.env.MONGO_CONNECTION_STRING || "mongodb://127.0.0.1:27017/kanbas"
+const CONNECTION_STRING = "mongodb://localhost:27017/kanbas";
 mongoose.connect(CONNECTION_STRING);
-
 const app = express()
-
-
-const corsOptions = {
-  origin: NETLIFY_URL || "http://localhost:3000",
-  credentials: true,
-};
-
-app.use(cors(corsOptions));
-
-app.use(express.json());
-UserRoutes(app);
-
-const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
-
+app.use(cors({
+    credentials: true,
+    origin: "http://localhost:3000",
+}));
 const sessionOptions = {
   secret: process.env.SESSION_SECRET || "kanbas",
   resave: false,
@@ -46,13 +31,18 @@ if (process.env.NODE_ENV !== "development") {
     domain: process.env.NODE_SERVER_DOMAIN,
   };
 }
-app.use(session(sessionOptions));
+
+app.use(
+  session(sessionOptions)
+);
+
 app.use(express.json());
 
 UserRoutes(app);
 CourseRoutes(app);
-Hello(app)
-Lab5(app);
 ModuleRoutes(app);
 AssignmentRoutes(app);
 EnrollmentRoutes(app);
+Hello(app)
+Lab5(app);
+app.listen(process.env.PORT || 4000)

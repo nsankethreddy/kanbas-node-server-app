@@ -3,30 +3,41 @@ const assignment = {
     description: "Create a NodeJS server with ExpressJS",
     due: "2021-10-10", completed: false, score: 0,
   };
+const module={
+    id:1, name:"NodeJS Module",description:"Module explaining how to create a NodeJS with ExpressJS", course:"MERN Stack"
+}
   export default function WorkingWithObjects(app) {
-    app.get("/Lab5/assignment", (req, res) => {
+    app.get("/lab5/assignment", (req, res) => {
       res.json(assignment);
     });
-    app.get("/Lab5/assignment/title", (req, res) => {
+    app.get("/lab5/assignment/title", (req, res) => {
         res.json(assignment.title);
       });
-      app.get("/Lab5/assignment/title/:newTitle", (req, res) => {
+    app.get("/lab5/assignment/title/:newTitle", (req, res) => {
         const { newTitle } = req.params;
         assignment.title = newTitle;
         res.json(assignment);
-      });
-      app.get("/Lab5/assignment/score/:newScore", (req, res) => {
+    });
+    app.get("/lab5/assignment/score/:newScore", (req, res) => {
         const { newScore } = req.params;
         assignment.score = newScore;
         res.json(assignment);
-      });
-
-      app.get("/Lab5/assignment/completed/:newCompleted", (req, res) => {
-        const { newCompleted } = req.params;
-        assignment.completed = newCompleted === "true";  // Ensure it's a boolean
+    });
+    app.get("/lab5/assignment/completed/:newStatus", (req, res) => {
+        const { newStatus } = req.params;
+        assignment.completed = newStatus;
         res.json(assignment);
-      });
-
-
+    });
+    app.get("/lab5/module", (req, res) => {
+        res.json(module);
+    });
+    app.get("/lab5/module/name", (req, res) => {
+        res.json(module.name);
+    });
+    app.get("/lab5/module/name/:newName", (req, res) => {
+        const { newName } = req.params;
+        module.name=newName;
+        res.json(module);
+    });
   };
-
+  

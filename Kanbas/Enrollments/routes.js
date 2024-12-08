@@ -1,14 +1,6 @@
 import * as enrollmentsDao from "./dao.js";
-
-/**
- * Sets up routes for enrollments.
- * @param {Express.Application} app - The Express application instance.
- */
 export default function EnrollmentRoutes(app) {
-  /**
-   * POST /api/enrollments
-   * Enroll a user in a course.
-   */
+
   app.post("/api/enrollments", (req, res) => {
     const { userId, courseId } = req.body;
     try {
@@ -25,10 +17,6 @@ export default function EnrollmentRoutes(app) {
     }
   });
 
-  /**
-   * DELETE /api/enrollments
-   * Unenroll a user from a course.
-   */
   app.delete("/api/enrollments", (req, res) => {
     const { userId, courseId } = req.body;
     try {
@@ -58,10 +46,6 @@ export default function EnrollmentRoutes(app) {
     }
   });
 
-  /**
-   * GET /api/enrollments
-   * Retrieves all enrollments.
-   */
   app.get("/api/enrollments", (req, res) => {
     try {
       const enrollments = enrollmentsDao.findAllEnrollments();

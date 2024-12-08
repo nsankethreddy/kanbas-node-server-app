@@ -98,7 +98,7 @@ export default[
     {
       "_id": "M301",
       "name": "Spacecraft Structural Design",
-      "description": "Fundamentals of deSigning spacecraft structures and materials selection.",
+      "description": "Fundamentals of designing spacecraft structures and materials selection.",
       "course": "RS103"
     },
     {
@@ -113,4 +113,4 @@ export default[
       "description": "Overview of spacecraft systems and subsystems engineering.",
       "course": "RS103"
     }
-  ]
+  ];

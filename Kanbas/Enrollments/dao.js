@@ -1,13 +1,6 @@
-
-
 import Database from "../Database/index.js";
 import model from "./model.js";
-/**
- * Enrolls a user in a course by adding an enrollment record.
- * @param {string} userId - The ID of the user.
- * @param {string} courseId - The ID of the course.
- * @returns {Object} The newly created enrollment.
- */
+
 // export function enrollUserInCourse(userId, courseId) {
 //   const { enrollments } = Database;
 
@@ -29,12 +22,6 @@ import model from "./model.js";
 //   return newEnrollment;
 // }
 
-/**
- * Unenrolls a user from a course by removing the enrollment record.
- * @param {string} userId - The ID of the user.
- * @param {string} courseId - The ID of the course.
- * @returns {Object|null} The removed enrollment or null if not found.
- */
 // export function unenrollUserFromCourse(userId, courseId) {
 //   const { enrollments } = Database;
 //   const enrollmentIndex = enrollments.findIndex(
@@ -47,11 +34,6 @@ import model from "./model.js";
 //   return removedEnrollment;
 // }
 
-/**
- * Retrieves enrollments for a specific user.
- * @param {string} userId - The ID of the user.
- * @returns {Array} An array of enrollments for the specified user.
- */
 export function findEnrollmentsForUser(userId) {
   const { enrollments } = Database;
   return enrollments.filter((enrollment) => enrollment.user === userId);
@@ -61,17 +43,21 @@ export function findAllEnrollments() {
   const { enrollments } = Database;
   return enrollments;
 }
+
+
 export async function findCoursesForUser(userId) {
+  console.log("user id",userId);
   const enrollments = await model.find({ user: userId }).populate("course");
+  console.log(enrollments);
+  console.log('returning...');
+  console.log(enrollments.map((enrollment) => enrollment.course));
   return enrollments.map((enrollment) => enrollment.course);
  }
- 
  export async function findUsersForCourse(courseId) {
   const enrollments = await model.find({ course: courseId }).populate("user");
   return enrollments.map((enrollment) => enrollment.user);
  }
  export function enrollUserInCourse(user, course) {
-  
   return model.create({ user, course });
  }
  export function unenrollUserFromCourse(user, course) {

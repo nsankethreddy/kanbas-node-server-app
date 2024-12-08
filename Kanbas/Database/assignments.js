@@ -66,7 +66,7 @@ export default[
     "_id": "A302",
     "title": "Orbital Calculations",
     "course": "RS103",
-    "description": "Calculate orbital parameters for spacecraft, including velocity, altitude, and transfer orbits, for different mission Profiles.",
+    "description": "Calculate orbital parameters for spacecraft, including velocity, altitude, and transfer orbits, for different mission profiles.",
     "points": 100,
     "dueDate": "2024-05-27",
     "availableDate": "2024-05-20"
@@ -80,4 +80,4 @@ export default[
     "dueDate": "2024-05-27",
     "availableDate": "2024-05-20"
   }
-]
+];
