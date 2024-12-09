@@ -11,7 +11,7 @@ import AssignmentRoutes from './Kanbas/Assignments/routes.js';
 import EnrollmentRoutes from './Kanbas/Enrollments/routes.js';
 import mongoose from "mongoose";
 
-const CONNECTION_STRING = "mongodb+srv://giuseppi:supersecretpassword@kkanbas.07cbn.mongodb.net/kanbas?retryWrites=true&w=majority&appName=kanbas";
+const CONNECTION_STRING = "mongodb+srv://giuseppi:supersecretpassword@kanbas.07cbn.mongodb.net/kanbas";
 mongoose.connect(CONNECTION_STRING);
 const app = express()
 app.use(cors({
